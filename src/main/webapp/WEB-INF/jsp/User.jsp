@@ -9,8 +9,20 @@
 <html>
 <head>
     <title>Title</title>
+    <script>
+        function myFunction()
+        {
+            document.getElementById("demo").innerHTML="我的第一个 JavaScript 函数";
+        }
+    </script>
 </head>
 <body>
-show  user success!
+
+
+<h1> show  user success! </h1>
+<p id="demo">一个段落</p>
+<button type="button" onclick="myFunction()">尝试一下</button>
+
+
 </body>
 </html>
