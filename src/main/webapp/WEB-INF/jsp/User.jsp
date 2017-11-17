@@ -15,6 +15,16 @@
             document.getElementById("demo").innerHTML="我的第一个 JavaScript 函数";
         }
     </script>
+    <script>
+        function myFunction()
+        {
+            alert("Hello World!");
+        }
+        function myFunction2(name,job)
+        {
+            alert("Welcome " + name + ", the " + job);
+        }
+    </script>
 </head>
 <body>
 
@@ -22,7 +32,7 @@
 <h1> show  user success! </h1>
 <p id="demo">一个段落</p>
 <button type="button" onclick="myFunction()">尝试一下</button>
-
-
+<button onclick="myFunction()">Try it</button>
+<button onclick="myFunction2('Bob','Builder')">Try it2</button>
 </body>
 </html>
