@@ -34,8 +34,9 @@ public class UserController {
     @RequestMapping(value = "showUser",method = RequestMethod.GET)
     public String showUser(){
 
-        logger.warning("showUser:可能失败");
+       // logger.warning("showUser:可能失败");
         List<User> userInfos = us.getUserInfoInfo();
+        System.out.println("list:"+userInfos);
         System.out.println("list:"+userInfos);
         return "User";
     }
