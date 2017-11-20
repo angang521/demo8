@@ -34,5 +34,7 @@
 <button type="button" onclick="myFunction()">尝试一下</button>
 <button onclick="myFunction()">Try it</button>
 <button onclick="myFunction2('Bob','Builder')">Try it2</button>
+
+
 </body>
 </html>

@@ -2,16 +2,14 @@ package com.controller;
 
 
 import com.pojo.User;
-
 import com.service_api.UserService_api;
-import com.test.Test;
+import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 
-import javax.annotation.Resource;
+
 import java.util.List;
 import java.util.logging.Logger;
 
@@ -27,7 +25,7 @@ public class UserController {
     public String getUserInfo(){
 
         logger.info("mian:start");
-        List<User> userInfos = us.getUserInfoInfo();
+        List<User> userInfos = us.getUserInfoInfo("111");
         System.out.println("list:"+userInfos);
         return "main";
     }
@@ -35,7 +33,7 @@ public class UserController {
     public String showUser(){
 
        // logger.warning("showUser:可能失败");
-        List<User> userInfos = us.getUserInfoInfo();
+        List<User> userInfos = us.getUserInfoInfo("111");
         System.out.println("list:"+userInfos);
         System.out.println("list:"+userInfos);
         return "User";
