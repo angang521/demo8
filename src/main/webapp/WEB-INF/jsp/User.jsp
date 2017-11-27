@@ -34,7 +34,9 @@
 <button type="button" onclick="myFunction()">尝试一下</button>
 <button onclick="myFunction()">Try it</button>
 <button onclick="myFunction2('Bob','Builder')">Try it2</button>
-
+<br>
+<h2><a href="/show.jsp">to show</a></h2>
+<h2><a href="/index.jsp">to index.jsp</a></h2>
 
 </body>
 </html>

@@ -15,8 +15,9 @@ public class MyElasticJob implements SimpleJob{
     public void execute(ShardingContext context) {
         int currentShard = context.getShardingItem();
         int shardTotal = context.getShardingTotalCount();
+        System.out.println("/////////////////////");
         System.out.println(context);
-        System.out.println(context.getShardingItem()+context.getJobName()+context.getTaskId()+context.getShardingTotalCount());
+        System.out.println("/////////////////////");
         us.runDriverCommentEvaluation(shardTotal,currentShard);
     }
 
