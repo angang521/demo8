@@ -35,8 +35,8 @@ public class BaseSpringTest extends TestCase {
 
 
 
-        ReflectionTestUtils.setField(userService_api, "user_aip2", mock);
-        ReflectionTestUtils.setField(userController, "userService_api", userService_api);
+       // ReflectionTestUtils.setField(userService_api, "user_aip2", mock);
+       // ReflectionTestUtils.setField(userController, "userService_api", userService_api);
 
        /* //mock商户查询
         MerchantCoreIntegration merchantCoreIntegration = EasyMock.createMock(MerchantCoreIntegration.class);

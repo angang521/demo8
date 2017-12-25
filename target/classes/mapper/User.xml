@@ -7,4 +7,51 @@
     <select id="getUserInfo" resultType="com.pojo.User">
         SELECT * FROM user;
     </select>
+
+   <!--
+   grep 'call DeductPayServiceImpl accountDeduct PARAM:' trade-deduct.2017-10-30.0.log | wc -l
+
+    select merchant_no,deduct_no,deduct_type,result_code,result_msg  from deduct_app.t_deduct_order where deduct_status = 'CLOSE'
+    AND PARTITION_DATE = to_date(to_char(SYSDATE-1,'YYYY/MM/DD'),'YYYY/MM/DD');
+
+    select PARTITION_DATE DATE_,count(*) TOTAL,
+    count(CASE WHEN (deduct_status = 'CLOSE') THEN deduct_status  END) CLOSE,
+    count(CASE WHEN (deduct_status = 'SUCCESS') THEN deduct_status  END) SUCCESS
+    from deduct_app.t_deduct_order group by PARTITION_DATE order by PARTITION_DATE desc;
+
+    select merchant_no,deduct_no,deduct_type,result_code,result_msg from deduct_app.t_deduct_order where deduct_status='CLOSE' AND PARTITION_DATE =to_date(to_char(sysdate-1,'yyyy/MM/dd',data,'yyyy/MM/dd');
+
+     **tongji
+    select PARTITION_DATE DATE_,count(*) TOTAL,
+    sum(CASE WHEN (deduct_status = 'CLOSE') THEN DEDUCT_AMT  END ) close_sum,
+    count(CASE WHEN (deduct_status = 'CLOSE') THEN deduct_status  END) CLOSE,
+    count(CASE WHEN (deduct_status = 'SUCCESS') THEN deduct_status  END) SUCCESS,
+    sum(CASE WHEN (deduct_status = 'SUCCESS') THEN DEDUCT_AMT  END ) success_sum
+    from deduct_app.t_deduct_order group by PARTITION_DATE order by PARTITION_DATE desc;
+
+    last day
+    select merchant_no,DEDUCT_AMT,deduct_no,deduct_type,result_code,result_msg  from deduct_app.t_deduct_order where deduct_status = 'CLOSE'
+    AND PARTITION_DATE = to_date(to_char(SYSDATE-1,'YYYY/MM/DD'),'YYYY/MM/DD');
+
+    select *  from deduct_app.t_deduct_trade where trade_request_no in (
+    select trade_request_no  from deduct_app.t_deduct_paytool where
+    PARTITION_DATE = to_date(to_char(SYSDATE-1,'YYYY/MM/DD'),'YYYY/MM/DD')
+    and trade_request_no not in (select trade_request_no  from deduct_app.t_deduct_trade
+    where trade_status = 'SUCCESS'
+    AND PARTITION_DATE = to_date(to_char(SYSDATE-1,'YYYY/MM/DD'),'YYYY/MM/DD')));
+
+    select *
+    from deduct_app.t_deduct_order
+    where TRANSOUT_OPERATOR_NO ='3178002027677611'
+    and PARTITION_DATE = to_date('20171101','YYYY/MM/DD');
+
+    select PARTITION_DATE DATE_, count(*) TOTAL,
+    sum(CASE WHEN (deduct_status = 'CLOSE') THEN DEDUCT_AMT  END ) close_sum,
+    count(CASE WHEN (deduct_status = 'CLOSE') THEN deduct_status  END) CLOSE,
+    count(CASE WHEN (deduct_status = 'SUCCESS') THEN deduct_status  END) SUCCESS,
+    sum(CASE WHEN (deduct_status = 'SUCCESS') THEN DEDUCT_AMT  END ) success_sum
+    from deduct_app.t_deduct_order where TRANSOUT_OPERATOR_NO ='3178002027677611' group by PARTITION_DATE order by PARTITION_DATE desc
+    ;
+-->
+
 </mapper>

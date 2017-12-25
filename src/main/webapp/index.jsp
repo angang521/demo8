@@ -3,9 +3,9 @@
 <html>
 
 <head>
-    <script src="js/jquery-3.2.1.slim.min.js"></script>
-  <%--<script src="http://libs.baidu.com/jquery/1.10.2/jquery.min.js">
-    </script>--%>
+    <%--<script src="js/jquery-3.2.1.slim.min.js"></script>--%>
+ <script src="http://libs.baidu.com/jquery/1.10.2/jquery.min.js">
+    </script>
 </head>
 <body>
 <h3><a href="/getUserInfo">请到主页 main</a></h3>
