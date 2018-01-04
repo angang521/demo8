@@ -3,23 +3,16 @@
 <html>
 
 <head>
-    <script src="js/jquery-3.2.1.slim.min.js"></script>
-  <%--<script src="http://libs.baidu.com/jquery/1.10.2/jquery.min.js">
-    </script>--%>
+    <%--<script src="js/jquery-3.2.1.slim.min.js"></script>--%>
+ <script src="http://libs.baidu.com/jquery/1.10.2/jquery.min.js">
+    </script>
 </head>
 <body>
-<h3><a href="/getUserInfo">请到主页 main</a></h3>
-<br>
-<div id="div1">
-    <p id="p1">This is a paragraph.</p>
-    <p id="p2">This is another paragraph.</p>
-</div>
-<script>
-    $("p").hide();
-</script>
-
-<script>
-
-</script>
+<h3>请登录</h3>
+<form action="toLoggin" method="post">
+    <p>账户: <input type="text" name="account" /></p>
+    <p>密码: <input type="password" name="pwd" /></p>
+    <input type="submit" value="Submit"/>
+</form>
 </body>
 </html>

@@ -11,4 +11,5 @@ import java.util.List;
 public interface UserDao {
 
       List<User> getUserInfo();
+      String findPwd(String account);
 }

@@ -8,6 +8,10 @@
         SELECT * FROM user;
     </select>
 
+    <select id="findPwd" resultType="String">
+        SELECT pwd FROM account WHERE account=#{account};
+    </select>
+
    <!--
    grep 'call DeductPayServiceImpl accountDeduct PARAM:' trade-deduct.2017-10-30.0.log | wc -l
 
