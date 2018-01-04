@@ -7,31 +7,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f3794451-afd1-4779-b02e-2c2f7ddc2f51" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__commons_beanutils_commons_beanutils_1_9_3.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__commons_collections_commons_collections_3_2_2.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_scala_lang_scala_library_2_8_0.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/Java/com/test/A.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/Java/com/test/DemoTest.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/Java/com/test/ExtInfo.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/Java/com/test/JsonToJava.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/Java/com/test/RequestDTO.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/Java/com/test/map.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/controller/UserController.class" afterPath="$PROJECT_DIR$/target/classes/com/controller/UserController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/dao/UserDao.class" afterPath="$PROJECT_DIR$/target/classes/com/dao/UserDao.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/demo8/WEB-INF/classes/com/controller/UserController.class" afterPath="$PROJECT_DIR$/target/demo8/WEB-INF/classes/com/controller/UserController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/demo8/WEB-INF/classes/com/dao/UserDao.class" afterPath="$PROJECT_DIR$/target/demo8/WEB-INF/classes/com/dao/UserDao.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/artifacts/demo8_war_exploded.xml" afterPath="$PROJECT_DIR$/.idea/artifacts/demo8_war_exploded.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/demo8.iml" afterPath="$PROJECT_DIR$/demo8.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pom.xml" afterPath="$PROJECT_DIR$/pom.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/Java/com/controller/UserController.java" afterPath="$PROJECT_DIR$/src/main/Java/com/controller/UserController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/Java/com/dao/UserDao.java" afterPath="$PROJECT_DIR$/src/main/Java/com/dao/UserDao.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/mapper/User.xml" afterPath="$PROJECT_DIR$/src/main/resources/mapper/User.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/main.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/main.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/index.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/index.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/mapper/User.xml" afterPath="$PROJECT_DIR$/target/classes/mapper/User.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/demo8/WEB-INF/classes/mapper/User.xml" afterPath="$PROJECT_DIR$/target/demo8/WEB-INF/classes/mapper/User.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/demo8/index.jsp" afterPath="$PROJECT_DIR$/target/demo8/index.jsp" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -67,7 +43,7 @@
       <file leaf-file-name="JsonToJava.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/Java/com/test/JsonToJava.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="263">
+            <state relative-caret-position="345">
               <caret line="27" column="58" lean-forward="true" selection-start-line="27" selection-start-column="58" selection-end-line="27" selection-end-column="58" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -823,7 +799,7 @@
       <workItem from="1514854620893" duration="589000" />
       <workItem from="1514958021402" duration="12941000" />
       <workItem from="1514973588426" duration="2502000" />
-      <workItem from="1515027177078" duration="8307000" />
+      <workItem from="1515027177078" duration="9124000" />
     </task>
     <task id="LOCAL-00001" summary="test">
       <created>1510716645185</created>
@@ -888,7 +864,14 @@
       <option name="project" value="LOCAL" />
       <updated>1514185766409</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="json 解析">
+      <created>1515041197681</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1515041197681</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -924,7 +907,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="197707000" />
+    <option name="totallyTimeSpent" value="198524000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1051,7 +1034,8 @@
     <MESSAGE value="test too" />
     <MESSAGE value="test 1130" />
     <MESSAGE value="test777" />
-    <option name="LAST_COMMIT_MESSAGE" value="test777" />
+    <MESSAGE value="json 解析" />
+    <option name="LAST_COMMIT_MESSAGE" value="json 解析" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1490,7 +1474,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/Java/com/test/JsonToJava.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="263">
+        <state relative-caret-position="345">
           <caret line="27" column="58" lean-forward="true" selection-start-line="27" selection-start-column="58" selection-end-line="27" selection-end-column="58" />
           <folding>
             <element signature="imports" expanded="true" />
