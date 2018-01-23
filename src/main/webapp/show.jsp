@@ -9,51 +9,49 @@
 <html>
 <head>
     <title>$Title$</title>
+    <script src="../../Scripts/jquery-1.7.1.min.js"></script>
+    <script type="text/javascript">
+
+        function add() {
+            $.ajax({
+                url: "/api/test/",
+                type: "POST",
+                data: { "UserID": 4, "UserName": "test", "UserEmail": "Parry@cnblogs.com" },
+                success: function(data) { alert(JSON.stringify(data)); }
+            });
+        }
+
+        //更新
+        function update(id) {
+            $.ajax({
+                url: "/api/test?id=" + id,
+                type: "Put",
+                data: { "UserID": 1, "UserName": "moditest", "UserEmail": "Parry@cnblogs.com" },
+                success: function(data) { alert(JSON.stringify(data)); }
+            });
+        }
+
+        function deletes(id) {
+            $.ajax({
+                url: "/api/test/1",
+                type: "DELETE",
+                success: function(data) { alert(data); }
+            });
+        }
+    </script>
 </head>
 <body>
-<p id="demo"></p>
-<script>
-    var text = '{"employees":[' +
-        '{"firstName":"John","lastName":"Doe" },' +
-        '{"firstName":"Anna","lastName":"Smith" },' +
-        '{"firstName":"Peter","lastName":"Jones" }]}';
-    obj = JSON.parse(text);
-    document.getElementById("demo").innerHTML =
-        obj.employees[2].firstName + " " + obj.employees[1].lastName;
-
-    var x = 1;
-
-    function myFunction() {
-        x++;
-        alert(x);
-    }
-   //alert(x)
-
-</script>
-<button onclick="myFunction()">show myFunction</button>
-
-
-<script>
-    document.write(Date());
-</script>
-
-<p id="p2">Hello World!</p>
-
-<script>
-    document.getElementById("p2").style.color="blue";
-</script>
-
-<p>The paragraph above was changed by a script.</p>
-
-
-
-<h1 id="id1">My Heading 1</h1>
-<button type="button"
-        onclick="document.getElementById('id1').style.color='red'">
-    Click Me!</button>
-
-
-
+<div>
+    <fieldset>
+        <legend>测试Web Api
+        </legend>
+        <a href="javascript:add()">添加(post)</a>
+        <a href="javascript:update(1)">更新(put)</a>
+        <a href="javascript:deletes(1)">删除(delete)</a>
+        <a href="/api/test">列表(Get)</a>
+        <a href="/api/test/1">实体(Get)</a>
+    </fieldset>
+</div>
 
 </body>
 </html>
