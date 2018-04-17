@@ -30,44 +30,44 @@ public class UserController {
 
     private static Logger logger = Logger.getLogger(String.valueOf(Test.class));
 
-    @RequestMapping(value = "toLoggin",method = RequestMethod.POST)
-    public String toLoggin(HttpServletRequest request, HttpServletResponse response){
+    @RequestMapping(value = "toLoggin", method = RequestMethod.POST)
+    public String toLoggin(HttpServletRequest request, HttpServletResponse response) {
         HttpSession session = request.getSession();
-        String account =(String) request.getParameter("account");
-        String pwd = (String)request.getParameter("pwd");
+        String account = (String) request.getParameter("account");
+        String pwd = (String) request.getParameter("pwd");
         String pwd1 = ud.findPwd(account);
-        if(pwd.equals(pwd1)){
+        if (pwd.equals(pwd1)) {
             return "main";
-        }else {
+        } else {
             return "index.jsp";
         }
 
     }
 
-    @RequestMapping(value = "getUserInfo",method = RequestMethod.GET)
-    public String getUserInfo(){
+    @RequestMapping(value = "getUserInfo", method = RequestMethod.GET)
+    public String getUserInfo() {
 
         logger.info("mian:start");
         List<User> userInfos = us.getUserInfoInfo("111");
-        System.out.println("list:"+userInfos);
+        System.out.println("list:" + userInfos);
         return "main";
     }
 
-    @RequestMapping(value = "showUser",method = RequestMethod.GET)
-    public String showUser(){
+    @RequestMapping(value = "showUser", method = RequestMethod.GET)
+    public String showUser() {
 
-       // logger.warning("showUser:可能失败");
+        // logger.warning("showUser:可能失败");
         List<User> userInfos = us.getUserInfoInfo("111");
-        System.out.println("list:"+userInfos);
-        System.out.println("list:"+userInfos);
+        System.out.println("list:" + userInfos);
+        System.out.println("list:" + userInfos);
         return "User";
     }
 
-    @RequestMapping(value = "getJson",method = RequestMethod.POST)
-    public String getJson(){
+    @RequestMapping(value = "getJson", method = RequestMethod.POST)
+    public String getJson() {
         List<User> userInfos = us.getUserInfoInfo("111");
-        System.out.println("list:"+userInfos);
-        System.out.println("list:"+userInfos);
+        System.out.println("list:" + userInfos);
+        System.out.println("list:" + userInfos);
         return "User";
     }
 

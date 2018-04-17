@@ -62,7 +62,7 @@
     <orderEntry type="library" name="Maven: commons-codec:commons-codec:1.9" level="project" />
     <orderEntry type="library" name="Maven: org.aspectj:aspectjtools:1.6.2" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-context:4.0.2.RELEASE" level="project" />
-    <orderEntry type="library" name="Maven: org.easymock:easymock:3.5.1" level="project" />
+    <orderEntry type="library" name="Maven: org.easymock:easymock:3.6" level="project" />
     <orderEntry type="library" name="Maven: org.objenesis:objenesis:2.6" level="project" />
     <orderEntry type="library" name="Maven: javax.servlet:javax.servlet-api:3.1.0" level="project" />
     <orderEntry type="library" name="Maven: com.dangdang:elastic-job-lite-core:2.0.5" level="project" />

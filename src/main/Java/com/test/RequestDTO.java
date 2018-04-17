@@ -18,9 +18,11 @@ public class RequestDTO {
     private String name;
     private String mobileNo;
     private String zmAuthFlag;
+
     public void setApplyNo(String applyNo) {
         this.applyNo = applyNo;
     }
+
     public String getApplyNo() {
         return applyNo;
     }
@@ -28,6 +30,7 @@ public class RequestDTO {
     public void setApplyAmt(String applyAmt) {
         this.applyAmt = applyAmt;
     }
+
     public String getApplyAmt() {
         return applyAmt;
     }
@@ -35,6 +38,7 @@ public class RequestDTO {
     public void setCertType(String certType) {
         this.certType = certType;
     }
+
     public String getCertType() {
         return certType;
     }
@@ -42,6 +46,7 @@ public class RequestDTO {
     public void setCertNo(String certNo) {
         this.certNo = certNo;
     }
+
     public String getCertNo() {
         return certNo;
     }
@@ -49,6 +54,7 @@ public class RequestDTO {
     public void setName(String name) {
         this.name = name;
     }
+
     public String getName() {
         return name;
     }
@@ -56,6 +62,7 @@ public class RequestDTO {
     public void setMobileNo(String mobileNo) {
         this.mobileNo = mobileNo;
     }
+
     public String getMobileNo() {
         return mobileNo;
     }
@@ -63,6 +70,7 @@ public class RequestDTO {
     public void setZmAuthFlag(String zmAuthFlag) {
         this.zmAuthFlag = zmAuthFlag;
     }
+
     public String getZmAuthFlag() {
         return zmAuthFlag;
     }

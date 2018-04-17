@@ -12,8 +12,8 @@ public class UserControlleeTest extends BaseSpringTest {
     private static Logger logger = Logger.getLogger(String.valueOf(Test.class));
 
     @Test
-    public void getUserInfoTest(){
-        User user=new User();
+    public void getUserInfoTest() {
+        User user = new User();
         user.setUserName("xiao ming");
         user.setPassword("123");
         mock(user);

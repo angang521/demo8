@@ -24,5 +24,5 @@ def query = params.get("query");
 String bannerName = params.get("bannerName");
 params.put("bannerName",bannerName);
 
-return  DefaultGroovyExecutor.INSTANCE.execute(InvokeRequest.getRemoteServiceInvokeRequest(params,false));
+return DefaultGroovyExecutor.INSTANCE.execute(InvokeRequest.getRemoteServiceInvokeRequest(params,false));
 }

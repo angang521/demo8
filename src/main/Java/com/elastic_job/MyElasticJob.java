@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
-public class MyElasticJob implements SimpleJob{
+public class MyElasticJob implements SimpleJob {
     @Autowired
     private UserService_api us;
 
@@ -18,7 +18,7 @@ public class MyElasticJob implements SimpleJob{
         System.out.println("/////////////////////");
         System.out.println(context);
         System.out.println("/////////////////////");
-        us.runDriverCommentEvaluation(shardTotal,currentShard);
+        us.runDriverCommentEvaluation(shardTotal, currentShard);
     }
 
 }

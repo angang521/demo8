@@ -10,6 +10,7 @@ import java.util.List;
 @Repository
 public interface UserDao {
 
-      List<User> getUserInfo();
-      String findPwd(String account);
+    List<User> getUserInfo();
+
+    String findPwd(String account);
 }

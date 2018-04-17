@@ -6,7 +6,8 @@ public class DemoTest {
     private int x;
     private int y;
 
-    private Date date=new Date();
+    private Date date = new Date();
+
     public DemoTest() {
     }
 

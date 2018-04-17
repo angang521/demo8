@@ -27,16 +27,15 @@ public class BaseSpringTest extends TestCase {
     public <T extends User> void mock(T t) {
 
         UserService2_Impl mock = EasyMock.createMock(UserService2_Impl.class);
-        User user=new User();
+        User user = new User();
         user.setUserName("xiao ming");
         user.setPassword("123");
         EasyMock.expect(mock.getUserById(t.getUserName())).andReturn(user);
         EasyMock.replay(mock);
 
 
-
-       // ReflectionTestUtils.setField(userService_api, "user_aip2", mock);
-       // ReflectionTestUtils.setField(userController, "userService_api", userService_api);
+        // ReflectionTestUtils.setField(userService_api, "user_aip2", mock);
+        // ReflectionTestUtils.setField(userController, "userService_api", userService_api);
 
        /* //mock商户查询
         MerchantCoreIntegration merchantCoreIntegration = EasyMock.createMock(MerchantCoreIntegration.class);

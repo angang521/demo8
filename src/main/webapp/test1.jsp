@@ -120,7 +120,8 @@
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label class="col-lg-2 control-label"><font color="red">*</font>类型(循环次数/超时时间)):</label>
+                                    <label class="col-lg-2 control-label"><font
+                                            color="red">*</font>类型(循环次数/超时时间)):</label>
                                     <div class="col-lg-8">
                                         <select class="form-control" name="controlType" id="controlType">
                                             <option value="PRODUCT_TIMEOUT" selected>产品超时时间</option>

@@ -4,6 +4,7 @@ import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import org.apache.commons.beanutils.PropertyUtilsBean;
+
 import java.beans.BeanInfo;
 import java.beans.IntrospectionException;
 import java.beans.Introspector;
@@ -22,7 +23,7 @@ public class JsonToJava {
         String jsonString = "[{'key':'score', 'value':'88'}," +
                 "{'key':'fun', 'value':'28'}," +
                 "{'key':'love', 'value':'48'}]";
-        String data="[{'key':'activity_area_stability','value':'03'},"+"{'key':'last_1y_total_active_biz_cnt','value':'10'}]";
+        String data = "[{'key':'activity_area_stability','value':'03'}," + "{'key':'last_1y_total_active_biz_cnt','value':'10'}]";
         JSONArray myJsonArray = JSON.parseArray(jsonString);
         for (int i = 0; i < myJsonArray.size(); i++) {
             String string = myJsonArray.get(i).toString();
@@ -30,14 +31,15 @@ public class JsonToJava {
             map.put(map1.getKey(), map1.getValue());
         }
         A a = mapToBean(A.class, map);
-        System.out.println("map to bean="+a);
+        System.out.println("map to bean=" + a);
         Map<String, Object> stringObjectMap = beanToMap(a);
-        System.out.println("bean to map="+stringObjectMap);
+        System.out.println("bean to map=" + stringObjectMap);
 
     }
 
     /**
      * 将JavaBean实体类转为map类型，然后返回一个map类型的值
+     *
      * @param obj，要转化的JavaBean 对象
      * @return 需要返回的map
      */
@@ -49,7 +51,7 @@ public class JsonToJava {
             for (int i = 0; i < descriptors.length; i++) {
                 String name = descriptors[i].getName();
                 if (!"class".equals(name)) {
-                    if(propertyUtilsBean.getNestedProperty(obj, name) != null){
+                    if (propertyUtilsBean.getNestedProperty(obj, name) != null) {
                         params.put(name, propertyUtilsBean.getNestedProperty(obj, name));
                     }
                 }
@@ -62,8 +64,9 @@ public class JsonToJava {
 
     /**
      * 将一个 Map 对象转化为一个 JavaBean
+     *
      * @param clazz 要转化的类型
-     * @param map 包含属性值的 map
+     * @param map   包含属性值的 map
      * @return 转化出来的 JavaBean 对象
      * @throws IntrospectionException
      * @throws IllegalAccessException
@@ -73,7 +76,7 @@ public class JsonToJava {
     public static <T> T mapToBean(Class<T> clazz, Map<?, ?> map) {
         T obj = null;
         try {
-           BeanInfo beanInfo = Introspector.getBeanInfo(clazz);
+            BeanInfo beanInfo = Introspector.getBeanInfo(clazz);
             obj = clazz.newInstance(); // 创建 JavaBean 对象
 
             // 给 JavaBean 对象的属性赋值
@@ -122,10 +125,10 @@ public class JsonToJava {
                 System.out.println("propertyName=" + propertyName);
                 String string = jsonArray.toString();
                 System.out.println(string);
-                DemoTest demoTest = JSON.parseObject(jsonArray,DemoTest.class);
+                DemoTest demoTest = JSON.parseObject(jsonArray, DemoTest.class);
                 System.out.println(demoTest);
 
-                if (1>0) {
+                if (1 > 0) {
                     Object value = propertyName;
                     if ("".equals(value)) {
                         value = null;
@@ -148,7 +151,7 @@ public class JsonToJava {
         } catch (InstantiationException e) {
             System.out.println("实例化 JavaBean 失败");
         }
-      return (T) obj;
+        return (T) obj;
     }
 
 }

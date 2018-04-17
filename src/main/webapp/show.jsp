@@ -16,8 +16,10 @@
             $.ajax({
                 url: "/api/test/",
                 type: "POST",
-                data: { "UserID": 4, "UserName": "test", "UserEmail": "Parry@cnblogs.com" },
-                success: function(data) { alert(JSON.stringify(data)); }
+                data: {"UserID": 4, "UserName": "test", "UserEmail": "Parry@cnblogs.com"},
+                success: function (data) {
+                    alert(JSON.stringify(data));
+                }
             });
         }
 
@@ -26,8 +28,10 @@
             $.ajax({
                 url: "/api/test?id=" + id,
                 type: "Put",
-                data: { "UserID": 1, "UserName": "moditest", "UserEmail": "Parry@cnblogs.com" },
-                success: function(data) { alert(JSON.stringify(data)); }
+                data: {"UserID": 1, "UserName": "moditest", "UserEmail": "Parry@cnblogs.com"},
+                success: function (data) {
+                    alert(JSON.stringify(data));
+                }
             });
         }
 
@@ -35,7 +39,9 @@
             $.ajax({
                 url: "/api/test/1",
                 type: "DELETE",
-                success: function(data) { alert(data); }
+                success: function (data) {
+                    alert(data);
+                }
             });
         }
     </script>

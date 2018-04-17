@@ -9,9 +9,10 @@ import java.util.Properties;
 
 
 public class Demo_io1 {
-    private static InputStream in=null;
+    private static InputStream in = null;
     private static Properties pro;
     private static FileInputStream stream;    //把代码放在静态代码块中，是为了在new对象时能够首先执行代码块
+
     {
         try {
             //通过反射获取InputStream流
@@ -36,7 +37,7 @@ public class Demo_io1 {
     }
 
 
-    public  void readProperties(){
+    public void readProperties() {
         //获取Properties 文件中属性，并输出
         System.out.println(pro.getProperty("name"));
         System.out.println(pro.getProperty("password"));
