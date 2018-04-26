@@ -1,0 +1,31 @@
+<!--分页查询初始化订单和待确认订单-->
+<select id="queryInitAndUnConfirmedOrderByPage" resultMap="deductOrderMap">
+    /*DeductOrderMapper  queryInitAndUnConfirmedOrderByPage*/
+    SELECT
+    a.*
+    FROM (
+    SELECT
+    t.*,
+    ROWNUM rnum
+    FROM (
+    SELECT
+    <include refid="DeductOrder_Base_Column_List" />
+    FROM
+    T_DEDUCT_ORDER
+    WHERE
+    PARTITION_DATE = #{partitionDate,jdbcType=DATE}
+    AND
+    (DEDUCT_STATUS = 'INIT' OR DEDUCT_STATUS = 'UNCONFIRMED')
+    ORDER BY
+    CREATED_AT ASC
+    ) t
+    WHERE
+    ROWNUM <![CDATA[ <= ]]> #{endIndex,jdbcType=DECIMAL}
+    ) a
+    WHERE
+    rnum > #{startIndex,jdbcType=DECIMAL}
+</select>
+
+<select>
+
+</select>

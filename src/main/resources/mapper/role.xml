@@ -1,0 +1,391 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bestpay.tradededuct.dal.mapper.DeductTradeMapper">
+
+    <resultMap id="deductTradeMap" type="com.bestpay.tradededuct.dal.model.DeductTradeDO">
+        <result column="ID"                     property="id"                   jdbcType="DECIMAL"/>
+        <result column="TRADE_REQUEST_NO"       property="tradeRequestNo"       jdbcType="VARCHAR" />
+        <result column="LOOP_TIMES"             property="loopTimes"            jdbcType="DECIMAL" />
+        <result column="DEDUCT_NO"              property="deductNo"             jdbcType="VARCHAR" />
+        <result column="DEDUCT_TYPE"            property="deductType"           jdbcType="VARCHAR" />
+        <result column="TRADE_NO"               property="tradeNo"              jdbcType="VARCHAR" />
+        <result column="CCY"                    property="ccy"                  jdbcType="VARCHAR" />
+        <result column="TRADE_AMT"              property="tradeAmt"             jdbcType="DECIMAL" />
+        <result column="PAY_AMT"                property="payAmt"               jdbcType="DECIMAL" />
+        <result column="DISCOUNT_AMT"           property="discountAmt"          jdbcType="DECIMAL" />
+        <result column="FEE_AMT"                property="feeAmt"               jdbcType="DECIMAL" />
+        <result column="TRADE_STATUS"           property="tradeStatus"          jdbcType="VARCHAR" />
+        <result column="TRADE_FINISHED_DATE"    property="tradeFinishedDate"    jdbcType="TIMESTAMP" />
+        <result column="REQUEST_DATE"           property="requestDate"          jdbcType="TIMESTAMP" />
+        <result column="REQUEST_SYSTEM"         property="requestSystem"        jdbcType="VARCHAR" />
+        <result column="MEMO"                   property="memo"                 jdbcType="VARCHAR" />
+        <result column="RESULT_CODE"            property="resultCode"           jdbcType="VARCHAR" />
+        <result column="RESULT_MSG"             property="resultMsg"            jdbcType="VARCHAR" />
+        <result column="CREATED_BY"             property="createdBy"            jdbcType="VARCHAR" />
+        <result column="CREATED_AT"             property="createdAt"            jdbcType="TIMESTAMP" />
+        <result column="UPDATED_BY"             property="updatedBy"            jdbcType="VARCHAR" />
+        <result column="UPDATED_AT"             property="updatedAt"            jdbcType="TIMESTAMP" />
+        <result column="PARTITION_DATE"         property="partitionDate"        jdbcType="DATE"/>
+    </resultMap>
+
+    <sql id="DeductTrade_Base_Column_List">
+        ID,
+        TRADE_REQUEST_NO,
+        LOOP_TIMES,
+        DEDUCT_NO,
+        DEDUCT_TYPE,
+        TRADE_NO,
+        CCY,
+        TRADE_AMT,
+        PAY_AMT,
+        DISCOUNT_AMT,
+        FEE_AMT,
+        TRADE_STATUS,
+        TRADE_FINISHED_DATE,
+        REQUEST_DATE,
+        REQUEST_SYSTEM,
+        MEMO,
+        RESULT_CODE,
+        RESULT_MSG,
+        CREATED_BY,
+        CREATED_AT,
+        UPDATED_BY,
+        UPDATED_AT,
+        PARTITION_DATE
+    </sql>
+
+    <!-- 新增dispatch任务 -->
+    <insert id="insert" parameterType="com.bestpay.tradededuct.dal.model.DeductTradeDO">
+        /*DeductTradeMapper.insert*/
+        INSERT INTO
+        T_DEDUCT_TRADE(
+        ID,
+        TRADE_REQUEST_NO,
+        LOOP_TIMES,
+        DEDUCT_NO,
+        DEDUCT_TYPE,
+        TRADE_NO,
+        CCY,
+        TRADE_AMT,
+        PAY_AMT,
+        DISCOUNT_AMT,
+        FEE_AMT,
+        TRADE_STATUS,
+        TRADE_FINISHED_DATE,
+        REQUEST_DATE,
+        REQUEST_SYSTEM,
+        MEMO,
+        RESULT_CODE,
+        RESULT_MSG,
+        CREATED_BY,
+        CREATED_AT,
+        UPDATED_BY,
+        UPDATED_AT,
+        PARTITION_DATE
+        )
+        VALUES(
+        SEQ_DEDUCT_TRADE.NEXTVAL,
+        #{tradeRequestNo,jdbcType=VARCHAR},
+        #{loopTimes,jdbcType=DECIMAL},
+        #{deductNo,jdbcType=VARCHAR},
+        #{deductType,jdbcType=VARCHAR},
+        #{tradeNo,jdbcType=VARCHAR},
+        #{ccy,jdbcType=VARCHAR},
+        #{tradeAmt,jdbcType=DECIMAL},
+        #{payAmt,jdbcType=DECIMAL},
+        #{discountAmt,jdbcType=DECIMAL},
+        #{feeAmt,jdbcType=DECIMAL},
+        #{tradeStatus,jdbcType=VARCHAR},
+        #{tradeFinishedDate,jdbcType=TIMESTAMP},
+        #{requestDate,jdbcType=TIMESTAMP},
+        #{requestSystem,jdbcType=VARCHAR},
+        #{memo,jdbcType=VARCHAR},
+        #{resultCode,jdbcType=VARCHAR},
+        #{resultMsg,jdbcType=VARCHAR},
+        #{createdBy,jdbcType=VARCHAR},
+        SYSDATE,
+        #{updatedBy,jdbcType=VARCHAR},
+        SYSDATE,
+        #{partitionDate,jdbcType=DATE}
+        )
+    </insert>
+
+    <!-- 依据代扣业务号和分区字段查询代扣交易信息表记录-->
+    <select id="selectByDeductNo" resultMap="deductTradeMap" parameterType="com.bestpay.tradededuct.dal.model.DeductTradeDO">
+        /*DeductTradeMapper selectByDeductNo*/
+        SELECT
+        <include refid="DeductTrade_Base_Column_List" />
+        FROM
+        T_DEDUCT_TRADE
+        WHERE
+        DEDUCT_NO = #{deductNo,jdbcType=VARCHAR}
+        AND
+        PARTITION_DATE = #{partitionDate,jdbcType=DATE}
+    </select>
+
+    <!--  依据代扣业务号和分区字段更新代扣交易信息表 -->
+    <update id="updateByDeductNo" parameterType="com.bestpay.tradededuct.dal.model.DeductTradeDO">
+        /*DeductTradeMapper updateByDeductNo*/
+        UPDATE
+        T_DEDUCT_TRADE
+        <set>
+            <if test="tradeRequestNo != null">
+                TRADE_REQUEST_NO = #{tradeRequestNo,jdbcType=VARCHAR},
+            </if>
+            <if test="loopTimes != null">
+                LOOP_TIMES = #{loopTimes,jdbcType=DECIMAL},
+            </if>
+            <if test="deductType != null">
+                DEDUCT_TYPE =  #{deductType,jdbcType=VARCHAR},
+            </if>
+            <if test="tradeNo != null">
+                TRADE_NO = #{tradeNo,jdbcType=VARCHAR},
+            </if>
+            <if test="ccy != null">
+                CCY = #{ccy,jdbcType=VARCHAR},
+            </if>
+            <if test="tradeAmt != null">
+                TRADE_AMT = #{tradeAmt,jdbcType=DECIMAL},
+            </if>
+            <if test="payAmt != null">
+                PAY_AMT = #{payAmt,jdbcType=DECIMAL},
+            </if>
+            <if test="discountAmt != null">
+                DISCOUNT_AMT = #{discountAmt,jdbcType=DECIMAL},
+            </if>
+            <if test="feeAmt != null">
+                FEE_AMT = #{feeAmt,jdbcType=DECIMAL},
+            </if>
+            <if test="tradeStatus != null">
+                TRADE_STATUS = #{tradeStatus,jdbcType=VARCHAR},
+            </if>
+            <if test="tradeFinishedDate != null">
+                TRADE_FINISHED_DATE = #{tradeFinishedDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="requestDate != null">
+                REQUEST_DATE = #{requestDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="requestSystem != null">
+                REQUEST_SYSTEM = #{requestSystem,jdbcType=VARCHAR},
+            </if>
+            <if test="memo != null">
+                MEMO = #{memo,jdbcType=VARCHAR},
+            </if>
+            <if test="resultCode != null">
+                RESULT_CODE = #{resultCode,jdbcType=VARCHAR},
+            </if>
+            <if test="resultMsg != null">
+                RESULT_MSG = #{resultMsg,jdbcType=VARCHAR},
+            </if>
+            <if test="updatedBy != null">
+                UPDATED_BY = #{updatedBy,jdbcType=VARCHAR},
+            </if>
+            UPDATED_AT = SYSDATE
+        </set>
+        WHERE
+        DEDUCT_NO = #{deductNo,jdbcType=VARCHAR}
+        AND
+        PARTITION_DATE = #{partitionDate,jdbcType=DATE}
+        AND
+        TRADE_STATUS = 'INIT'
+    </update>
+
+    <!-- 依据请求系统单号和分区字段更新代扣交易信息表 -->
+    <update id="updateByRequestOrderNoAndUNCONFIRMED" parameterType="com.bestpay.tradededuct.dal.model.DeductTradeDO">
+        /*DeductTradeMapper updateByRequestOrderNo*/
+        UPDATE T_DEDUCT_TRADE
+        <set>
+            <if test="loopTimes != null">
+                LOOP_TIMES = #{loopTimes,jdbcType=DECIMAL},
+            </if>
+            <if test="deductNo != null">
+                DEDUCT_NO = #{deductNo,jdbcType=VARCHAR},
+            </if>
+            <if test="deductType != null">
+                DEDUCT_TYPE =  #{deductType,jdbcType=VARCHAR},
+            </if>
+            <if test="tradeNo != null">
+                TRADE_NO = #{tradeNo,jdbcType=VARCHAR},
+            </if>
+            <if test="ccy != null">
+                CCY = #{ccy,jdbcType=VARCHAR},
+            </if>
+            <if test="payAmt != null">
+                PAY_AMT = #{payAmt,jdbcType=DECIMAL},
+            </if>
+            <if test="discountAmt != null">
+                DISCOUNT_AMT = #{discountAmt,jdbcType=DECIMAL},
+            </if>
+            <if test="feeAmt != null">
+                FEE_AMT = #{feeAmt,jdbcType=DECIMAL},
+            </if>
+            <if test="tradeStatus != null">
+                TRADE_STATUS = #{tradeStatus,jdbcType=VARCHAR},
+            </if>
+            <if test="tradeFinishedDate != null">
+                TRADE_FINISHED_DATE = #{tradeFinishedDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="requestDate != null">
+                REQUEST_DATE = #{requestDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="requestSystem != null">
+                REQUEST_SYSTEM = #{requestSystem,jdbcType=VARCHAR},
+            </if>
+            <if test="memo != null">
+                MEMO = #{memo,jdbcType=VARCHAR},
+            </if>
+            <if test="resultCode != null">
+                RESULT_CODE = #{resultCode,jdbcType=VARCHAR},
+            </if>
+            <if test="resultMsg != null">
+                RESULT_MSG = #{resultMsg,jdbcType=VARCHAR},
+            </if>
+            <if test="updatedBy != null">
+                UPDATED_BY = #{updatedBy,jdbcType=VARCHAR},
+                UPDATED_AT = SYSDATE
+            </if>
+        </set>
+        WHERE
+        TRADE_REQUEST_NO = #{tradeRequestNo,jdbcType=VARCHAR}
+        AND
+        PARTITION_DATE = #{partitionDate,jdbcType=DATE}
+        AND
+        TRADE_STATUS = 'INIT'
+
+    </update>
+
+    <!-- 依据请求系统单号和分区字段更新代扣交易信息表 -->
+    <update id="updateByRequestOrderNo" parameterType="com.bestpay.tradededuct.dal.model.DeductTradeDO">
+        /*DeductTradeMapper updateByRequestOrderNo*/
+        UPDATE T_DEDUCT_TRADE
+        <set>
+            <if test="loopTimes != null">
+                LOOP_TIMES = #{loopTimes,jdbcType=DECIMAL},
+            </if>
+            <if test="deductNo != null">
+                DEDUCT_NO = #{deductNo,jdbcType=VARCHAR},
+            </if>
+            <if test="deductType != null">
+                DEDUCT_TYPE =  #{deductType,jdbcType=VARCHAR},
+            </if>
+            <if test="tradeNo != null">
+                TRADE_NO = #{tradeNo,jdbcType=VARCHAR},
+            </if>
+            <if test="ccy != null">
+                CCY = #{ccy,jdbcType=VARCHAR},
+            </if>
+            <if test="payAmt != null">
+                PAY_AMT = #{payAmt,jdbcType=DECIMAL},
+            </if>
+            <if test="discountAmt != null">
+                DISCOUNT_AMT = #{discountAmt,jdbcType=DECIMAL},
+            </if>
+            <if test="feeAmt != null">
+                FEE_AMT = #{feeAmt,jdbcType=DECIMAL},
+            </if>
+            <if test="tradeStatus != null">
+                TRADE_STATUS = #{tradeStatus,jdbcType=VARCHAR},
+            </if>
+            <if test="tradeFinishedDate != null">
+                TRADE_FINISHED_DATE = #{tradeFinishedDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="requestDate != null">
+                REQUEST_DATE = #{requestDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="requestSystem != null">
+                REQUEST_SYSTEM = #{requestSystem,jdbcType=VARCHAR},
+            </if>
+            <if test="memo != null">
+                MEMO = #{memo,jdbcType=VARCHAR},
+            </if>
+            <if test="resultCode != null">
+                RESULT_CODE = #{resultCode,jdbcType=VARCHAR},
+            </if>
+            <if test="resultMsg != null">
+                RESULT_MSG = #{resultMsg,jdbcType=VARCHAR},
+            </if>
+            <if test="updatedBy != null">
+                UPDATED_BY = #{updatedBy,jdbcType=VARCHAR},
+                UPDATED_AT = SYSDATE
+            </if>
+        </set>
+        WHERE
+        TRADE_REQUEST_NO = #{tradeRequestNo,jdbcType=VARCHAR}
+        AND
+        PARTITION_DATE = #{partitionDate,jdbcType=DATE}
+
+        AND
+        TRADE_STATUS in ( 'INIT','UNCONFIRMED')
+
+    </update>
+
+
+    <!-- 依据请求系统单号和分区字段查询交易信息表 -->
+    <select id="selectByTradeRequestNo" parameterType="com.bestpay.tradededuct.dal.model.DeductTradeDO" resultMap="deductTradeMap">
+        /*DeductTradeMapper selectByTradeRequestNo*/
+        SELECT
+        <include refid="DeductTrade_Base_Column_List" />
+        FROM
+        T_DEDUCT_TRADE
+        WHERE
+        TRADE_REQUEST_NO = #{tradeRequestNo,jdbcType=VARCHAR}
+        AND
+        PARTITION_DATE = #{partitionDate,jdbcType=DATE}
+    </select>
+
+    <!-- 依据代扣业务号查询成功代扣交易信息表记录-->
+    <select id="selectSuccessRecordByDeductNo" resultMap="deductTradeMap" parameterType="com.bestpay.tradededuct.dal.model.DeductTradeDO">
+        /*DeductTradeMapper selectByDeductNo*/
+        SELECT
+        <include refid="DeductTrade_Base_Column_List" />
+        FROM
+        T_DEDUCT_TRADE
+        WHERE
+        DEDUCT_NO = #{deductNo,jdbcType=VARCHAR}
+        AND
+        PARTITION_DATE = #{partitionDate,jdbcType=DATE}
+        AND
+        TRADE_STATUS = 'SUCCESS'
+    </select>
+
+    <!--  依据代扣业务号和分区字段更新代扣交易轮循次数信息表 -->
+    <update id="updateLoopTimesByDeductNo">
+        /*DeductTradeMapper updateLoopTimesByDeductNo*/
+        UPDATE T_DEDUCT_TRADE
+        <set>
+            <if test="loopTimes != null">
+                LOOP_TIMES = #{loopTimes,jdbcType=DECIMAL},
+            </if>
+
+        </set>
+        WHERE
+        DEDUCT_NO = #{deductNo,jdbcType=VARCHAR}
+        AND
+        PARTITION_DATE = #{partitionDate,jdbcType=DATE}
+        AND
+        TRADE_STATUS = 'INIT'
+    </update>
+
+    <!--  依据代扣业务号和分区字段更新代扣交易的待交易状态状态 -->
+    <update id="updateStatusByDeductNo">
+        /*DeductTradeMapper updateStatusByDeductNo*/
+        UPDATE T_DEDUCT_TRADE
+        <set>
+            <if test="deductStatus != null">
+                TRADE_STATUS = #{deductStatus,jdbcType=VARCHAR},
+            </if>
+            <if test="operator != null">
+                UPDATED_BY = #{operator,jdbcType=VARCHAR},
+            </if>
+            UPDATED_AT = SYSDATE
+        </set>
+        WHERE
+        DEDUCT_NO = #{deductNo,jdbcType=VARCHAR}
+        AND
+        PARTITION_DATE = #{partitionDate,jdbcType=DATE}
+        AND
+        TRADE_STATUS = 'UNCONFIRMED'
+    </update>
+</mapper>
